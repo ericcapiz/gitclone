@@ -7,7 +7,7 @@ import { MdEditDocument } from "react-icons/md";
 import Logout from "./Logout";
 
 const Sidebar = () => {
-  const authUser = false;
+  const authUser = true;
   return (
     <aside className="flex flex-col items-center min-w-12 sm:w-16 sticky top-0 py-8 overflow-y-auto border-r left-0 h-screen bg-glass">
       <nav className="h-full flex flex-col gap-3">
