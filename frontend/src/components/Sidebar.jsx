@@ -4,14 +4,12 @@ import { FaHeart } from "react-icons/fa";
 import { MdOutlineExplore } from "react-icons/md";
 import { PiSignInBold } from "react-icons/pi";
 import { MdEditDocument } from "react-icons/md";
+import Logout from "./Logout";
 
 const Sidebar = () => {
-  const authUser = true;
+  const authUser = false;
   return (
-    <aside
-      className="flex flex-col items-center min-w-12 sm:w-16 sticky top-0 py-8 overflow-y-auto border-r left-0 h-screen bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 
-    hover:bg-gray-600/10 border border-gray-800 text-white"
-    >
+    <aside className="flex flex-col items-center min-w-12 sm:w-16 sticky top-0 py-8 overflow-y-auto border-r left-0 h-screen bg-glass">
       <nav className="h-full flex flex-col gap-3">
         <Link to="/" className="flex justify-center">
           <img className="h-8" src="/github.svg" alt="github logo" />
@@ -57,6 +55,11 @@ const Sidebar = () => {
           >
             <MdEditDocument size={25} />
           </Link>
+        )}
+        {authUser && (
+          <div className="flex flex-col gap-2 mt-auto">
+            <Logout />
+          </div>
         )}
       </nav>
     </aside>
