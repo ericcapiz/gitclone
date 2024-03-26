@@ -4,6 +4,7 @@ import Repos from "../components/Repos";
 import Search from "../components/Search";
 import SortRepos from "../components/SortRepos";
 import toast from "react-hot-toast";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -22,7 +23,6 @@ const Home = () => {
       const repos = await repoRes.json();
 
       setRepos(repos);
-      console.log("breezy", userProfile);
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -39,8 +39,9 @@ const Home = () => {
       <Search />
       <SortRepos />
       <div className="flex gap-4 flex-col lg:flex-row justify-center items-start">
-        <ProfileInfo />
-        <Repos />
+        {userProfile && !loading && <ProfileInfo userProfile={userProfile} />}
+        {repos.length > 0 && !loading && <Repos repos={repos} />}
+        {loading && <Spinner />}
       </div>
     </div>
   );
